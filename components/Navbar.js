@@ -20,7 +20,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center">
             <Image
-              src="/Gemini_Generated_Image_10vr5610vr5610vr.png"
+              src="/Gemini_Generated_Image_10vr5610vr5610vr-removebg-preview.png"
               alt="StarKiddo Logo"
               width={140}
               height={56}
