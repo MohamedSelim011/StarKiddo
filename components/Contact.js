@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", age: "", course: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [state, handleSubmit] = useForm("mqeoqarj");
+  const [form, setForm] = useState({ name: "", phone: "", age: "", course: "", message: "" });
 
   const courses = [
     "Robot Builders Jr. (Ages 5–8)",
@@ -14,16 +15,6 @@ export default function Contact() {
     "Competition Prep (Ages 11–16)",
     "Not sure — advise me!",
   ];
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(form),
-    });
-    if (res.ok) setSubmitted(true);
-  };
 
   return (
     <section id="contact" className="py-24 px-4 bg-white">
@@ -83,7 +74,7 @@ export default function Contact() {
 
           {/* Form */}
           <div className="bg-[#F5F3FF] rounded-3xl p-8 lg:p-10">
-            {submitted ? (
+            {state.succeeded ? (
               <div className="text-center py-12">
                 <div className="text-6xl mb-4">🎉</div>
                 <h3 className="text-2xl font-black text-gray-900 mb-2">You&apos;re In!</h3>
@@ -101,6 +92,7 @@ export default function Contact() {
                     <input
                       required
                       type="text"
+                      name="name"
                       placeholder="Your name"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -112,6 +104,7 @@ export default function Contact() {
                     <input
                       required
                       type="number"
+                      name="age"
                       min="5"
                       max="16"
                       placeholder="e.g. 10"
@@ -127,11 +120,11 @@ export default function Contact() {
                   <input
                     required
                     type="email"
+                    name="email"
                     placeholder="your@email.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple bg-white"
                   />
+                  <ValidationError field="email" prefix="Email" errors={state.errors} className="text-red-500 text-xs mt-1" />
                 </div>
 
                 <div>
@@ -139,6 +132,7 @@ export default function Contact() {
                   <input
                     required
                     type="tel"
+                    name="phone"
                     placeholder="+20 1XX XXX XXXX"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -149,6 +143,7 @@ export default function Contact() {
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-1">Interested Course</label>
                   <select
+                    name="course"
                     value={form.course}
                     onChange={(e) => setForm({ ...form, course: e.target.value })}
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple bg-white"
@@ -164,6 +159,7 @@ export default function Contact() {
                   <label className="block text-sm font-bold text-gray-700 mb-1">Message (optional)</label>
                   <textarea
                     rows={3}
+                    name="message"
                     placeholder="Any questions or notes…"
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -171,11 +167,14 @@ export default function Contact() {
                   />
                 </div>
 
+                <ValidationError errors={state.errors} className="text-red-500 text-sm" />
+
                 <button
                   type="submit"
-                  className="w-full bg-gradient-brand text-white py-4 rounded-2xl font-black text-base shadow-lg hover:shadow-brand-purple/30 hover:scale-[1.02] transition-all duration-200"
+                  disabled={state.submitting}
+                  className="w-full bg-gradient-brand text-white py-4 rounded-2xl font-black text-base shadow-lg hover:shadow-brand-purple/30 hover:scale-[1.02] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Book My Free Trial 🎉
+                  {state.submitting ? "Sending…" : "Book My Free Trial 🎉"}
                 </button>
 
                 <p className="text-xs text-gray-400 text-center">
