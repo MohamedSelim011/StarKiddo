@@ -15,10 +15,14 @@ export default function Contact() {
     "Not sure — advise me!",
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Replace with your form handler (Formspree, EmailJS, etc.)
-    setSubmitted(true);
+    const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(form),
+    });
+    if (res.ok) setSubmitted(true);
   };
 
   return (
@@ -42,8 +46,8 @@ export default function Contact() {
             <div className="space-y-5">
               {[
                 { icon: "📍", label: "Location", value: "Cairo, Egypt" },
-                { icon: "📧", label: "Email", value: "hello@starkiddo.com" },
-                { icon: "📱", label: "WhatsApp", value: "+20 100 000 0000" },
+                { icon: "📧", label: "Email", value: "info@starkiddoapp.com" },
+                { icon: "📱", label: "WhatsApp", value: "+201200055267" },
                 { icon: "🕐", label: "Classes", value: "Weekdays & Weekends" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
