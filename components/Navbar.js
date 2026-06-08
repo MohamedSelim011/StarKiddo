@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -17,13 +18,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-gradient-brand flex items-center justify-center shadow-md">
-              <span className="text-white font-black text-lg">S</span>
-            </div>
-            <span className="font-black text-xl text-brand-purple">
-              Star<span className="text-brand-orange">Kiddo</span>
-            </span>
+          <a href="#" className="flex items-center">
+            <Image
+              src="/Gemini_Generated_Image_10vr5610vr5610vr.png"
+              alt="StarKiddo Logo"
+              width={140}
+              height={56}
+              className="object-contain"
+              priority
+            />
           </a>
 
           {/* Desktop links */}
