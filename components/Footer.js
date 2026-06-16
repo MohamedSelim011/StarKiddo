@@ -32,8 +32,8 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Cairo&apos;s leading AI & Robotics academy for kids aged 5–16.
-            Building the innovators of tomorrow, one class at a time.
+            Where Kids Learn, Build, and Shape the Future! 🌟<br />
+            Robotics, Programming, AI & STEM for kids aged 5–16.
           </p>
         </div>
 
@@ -71,10 +71,10 @@ export default function Footer() {
         <div>
           <h4 className="font-black text-sm uppercase tracking-wider text-gray-400 mb-4">Contact</h4>
           <ul className="space-y-3 text-sm text-gray-300">
-            <li className="flex items-start gap-2"><span>📍</span> Cairo, Egypt</li>
-            <li className="flex items-start gap-2"><span>📧</span> hello@starkiddo.com</li>
-            <li className="flex items-start gap-2"><span>📱</span> +20 100 000 0000</li>
-            <li className="flex items-start gap-2"><span>🕐</span> Sun–Thu 3–8PM, Fri–Sat 10AM–6PM</li>
+            <li className="flex items-start gap-2"><span>📧</span> info@starkiddoapp.com</li>
+            <li className="flex items-start gap-2"><span>📞</span> +20 10 09959112</li>
+            <li className="flex items-start gap-2"><span>☀️</span> Summer Camp: Jul 1 – Aug 15, 2026</li>
+            <li className="flex items-start gap-2"><span>🎟️</span> Limited Seats — Register Now!</li>
           </ul>
         </div>
       </div>
