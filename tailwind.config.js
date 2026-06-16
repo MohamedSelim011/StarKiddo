@@ -8,20 +8,20 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          purple: "#7C3AED",
-          "purple-light": "#A78BFA",
-          "purple-dark": "#5B21B6",
-          yellow: "#FCD34D",
-          "yellow-dark": "#F59E0B",
-          cyan: "#06B6D4",
-          "cyan-dark": "#0891B2",
-          pink: "#EC4899",
-          orange: "#F97316",
+          purple: "#312085",
+          "purple-light": "#856cc1",
+          "purple-dark": "#211a4f",
+          yellow: "#eccb51",
+          "yellow-dark": "#c9a820",
+          cyan: "#856cc1",
+          "cyan-dark": "#312085",
+          pink: "#9c7dd4",
+          orange: "#eccb51",
         },
       },
       fontFamily: {
-        display: ["var(--font-nunito)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        display: ["'Bagel Fat One'", "cursive"],
+        body: ["'Avenir Next'", "Avenir", "'Century Gothic'", "'Trebuchet MS'", "sans-serif"],
       },
       animation: {
         float: "float 3s ease-in-out infinite",
