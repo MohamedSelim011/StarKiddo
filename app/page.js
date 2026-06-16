@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import SummerCamp from "@/components/SummerCamp";
 import WhyUs from "@/components/WhyUs";
 import Courses from "@/components/Courses";
 import AgeGroups from "@/components/AgeGroups";
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <SummerCamp />
         <WhyUs />
         <Courses />
         <AgeGroups />

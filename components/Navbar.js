@@ -6,11 +6,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
+    { label: "Summer Camp 🌞", href: "#summer-camp" },
     { label: "Why StarKiddo", href: "#why" },
     { label: "Courses", href: "#courses" },
     { label: "Age Groups", href: "#ages" },
     { label: "How It Works", href: "#how" },
-    { label: "Testimonials", href: "#testimonials" },
   ];
 
   return (
