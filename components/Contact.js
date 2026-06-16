@@ -4,16 +4,17 @@ import { useForm, ValidationError } from "@formspree/react";
 
 export default function Contact() {
   const [state, handleSubmit] = useForm("mqeoqarj");
-  const [form, setForm] = useState({ name: "", phone: "", age: "", course: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", ageRange: "", message: "" });
+  const [interests, setInterests] = useState({ AI: false, Coding: false, Robotics: false, STEM: false });
 
-  const courses = [
-    "Robot Builders Jr. (Ages 5–8)",
-    "AI Explorer Camp (Ages 9–12)",
-    "Robotics Engineering (Ages 10–14)",
-    "AI & Data Science (Ages 13–16)",
-    "Innovation Bootcamp (Ages 10–16)",
-    "Competition Prep (Ages 11–16)",
-    "Not sure — advise me!",
+  const toggleInterest = (key) => setInterests((prev) => ({ ...prev, [key]: !prev[key] }));
+
+  const ageRanges = ["5 – 7 years", "8 – 10 years", "11 – 13 years", "14 – 16 years"];
+  const interestOptions = [
+    { key: "AI", icon: "🧠", label: "AI" },
+    { key: "Coding", icon: "💻", label: "Coding" },
+    { key: "Robotics", icon: "🤖", label: "Robotics" },
+    { key: "STEM", icon: "🔬", label: "STEM" },
   ];
 
   return (
@@ -100,18 +101,19 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">Child&apos;s Age *</label>
-                    <input
+                    <label className="block text-sm font-bold text-gray-700 mb-1">Child&apos;s Age Range *</label>
+                    <select
                       required
-                      type="number"
-                      name="age"
-                      min="5"
-                      max="16"
-                      placeholder="e.g. 10"
-                      value={form.age}
-                      onChange={(e) => setForm({ ...form, age: e.target.value })}
+                      name="ageRange"
+                      value={form.ageRange}
+                      onChange={(e) => setForm({ ...form, ageRange: e.target.value })}
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple bg-white"
-                    />
+                    >
+                      <option value="">Select age range…</option>
+                      {ageRanges.map((r) => (
+                        <option key={r} value={r}>{r}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
@@ -141,18 +143,29 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1">Interested Course</label>
-                  <select
-                    name="course"
-                    value={form.course}
-                    onChange={(e) => setForm({ ...form, course: e.target.value })}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple bg-white"
-                  >
-                    <option value="">Select a course…</option>
-                    {courses.map((c) => (
-                      <option key={c} value={c}>{c}</option>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Interests *</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {interestOptions.map(({ key, icon, label }) => (
+                      <label
+                        key={key}
+                        className={`flex items-center gap-2 px-4 py-3 rounded-xl border-2 cursor-pointer text-sm font-bold transition-all ${
+                          interests[key]
+                            ? "border-brand-purple bg-brand-purple/10 text-brand-purple"
+                            : "border-gray-200 bg-white text-gray-600 hover:border-brand-purple/40"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          name={`interest_${key}`}
+                          checked={interests[key]}
+                          onChange={() => toggleInterest(key)}
+                          className="hidden"
+                        />
+                        <span>{icon}</span> {label}
+                        {interests[key] && <span className="ml-auto text-brand-purple">✓</span>}
+                      </label>
                     ))}
-                  </select>
+                  </div>
                 </div>
 
                 <div>
