@@ -5,7 +5,7 @@ import { useForm, ValidationError } from "@formspree/react";
 export default function Contact() {
   const [state, handleSubmit] = useForm("mqeoqarj");
   const [form, setForm] = useState({ name: "", phone: "", ageRange: "", message: "" });
-  const [interests, setInterests] = useState({ AI: false, Coding: false, Robotics: false, STEM: false });
+  const [interests, setInterests] = useState({ AI: false, Coding: false, Robotics: false });
 
   const toggleInterest = (key) => setInterests((prev) => ({ ...prev, [key]: !prev[key] }));
 
@@ -14,7 +14,6 @@ export default function Contact() {
     { key: "AI", icon: "🧠", label: "AI" },
     { key: "Coding", icon: "💻", label: "Coding" },
     { key: "Robotics", icon: "🤖", label: "Robotics" },
-    { key: "STEM", icon: "🔬", label: "STEM" },
   ];
 
   return (
