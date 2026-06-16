@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function SummerCamp() {
   const activities = [
     { icon: "🤖", label: "Robotics" },
@@ -12,19 +10,6 @@ export default function SummerCamp() {
 
   return (
     <section id="summer-camp" className="py-0 overflow-hidden">
-      {/* Banner image */}
-      <div className="w-full">
-        <Image
-          src="/WhatsApp Image 2026-06-17 at 12.16.50 AM.jpeg"
-          alt="StarKiddo Summer Camp — Build. Learn. Create."
-          width={1920}
-          height={640}
-          className="w-full object-cover"
-          priority
-        />
-      </div>
-
-      {/* Details strip */}
       <div className="bg-brand-yellow px-4 py-16 relative overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
           {/* Live badge */}
