@@ -6,6 +6,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
+    { label: "Home", href: "#" },
     { label: "Summer Camp 🌞", href: "#summer-camp" },
     { label: "Why StarKiddo", href: "#why" },
     { label: "Courses", href: "#courses" },
@@ -20,7 +21,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center">
             <Image
-              src="/Gemini_Generated_Image_10vr5610vr5610vr-removebg-preview.png"
+              src="/starkiddo-01.png"
               alt="StarKiddo Logo"
               width={140}
               height={56}
