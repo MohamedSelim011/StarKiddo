@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import SummerCamp from "@/components/SummerCamp";
 import WhyUs from "@/components/WhyUs";
 import Courses from "@/components/Courses";
-import AgeGroups from "@/components/AgeGroups";
 import Testimonials from "@/components/Testimonials";
 import PhotoCarousel from "@/components/PhotoCarousel";
 import Contact from "@/components/Contact";
@@ -18,8 +17,7 @@ export default function Home() {
         <SummerCamp />
         <WhyUs />
         <Courses />
-        <AgeGroups />
-        <Testimonials />
+<Testimonials />
         <PhotoCarousel />
         <Contact />
       </main>
